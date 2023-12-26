@@ -3,6 +3,8 @@ name: windows-2019
 on:
  push:
  branches: [ "main" ]
+ pull_request:
+ branches: [ "main" ]
 
 jobs:
 
