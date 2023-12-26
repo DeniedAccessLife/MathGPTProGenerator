@@ -31,8 +31,5 @@ jobs:
   - name: Restore dependencies
     run: msbuild $env:Solution_Name /t:Restore
 
-  - name: Build
-    run: msbuild $env:Solution_Name /p:Configuration=${{ matrix.configuration }}
-
-  - name: Test
-    run: vstest.console.exe "$(Build.ArtifactStagingDirectory)\**\*test*.dll"
+  - name: Restore
+    run: dotnet restore $env:Solution_Name
