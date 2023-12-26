@@ -115,7 +115,7 @@ namespace MathGPTProGenerator
             process.StartInfo.Arguments = "/silent /install";
             process.Start();
 
-            if (!process.WaitForExit(30000))
+            if (!process.WaitForExit(120000))
             {
                 Utils.KillProcessChildren(process.Id);
                 Console.WriteLine("The installation process did not complete within the expected time!");
