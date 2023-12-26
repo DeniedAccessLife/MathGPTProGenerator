@@ -1,37 +1,37 @@
-name: .NET Core Desktop
+name: .NET Framework Desktop
 
 on:
  push:
-  branches: [ "main" ]
+ branches: [ "main" ]
  pull_request:
-  branches: [ "main" ]
+ branches: [ "main" ]
 
 jobs:
 
  build:
 
-  strategy:
-    matrix:
-      configuration: [Debug, Release]
+ strategy:
+  matrix:
+    configuration: [Debug, Release]
 
-  runs-on: windows-latest
+ runs-on: windows-2016
 
-  env:
-    Solution_Name: ./MathGPTProGenerator.csproj
+ env:
+  Solution_Name: /MathGPTProGenerator.csproj
 
-  steps:
-  - name: Checkout
-    uses: actions/checkout@v3
-    with:
-      fetch-depth: 0
+ steps:
+ - name: Checkout
+  uses: actions/checkout@v3
+  with:
+    fetch-depth: 0
 
-  - name: Install .NET Core
-    uses: actions/setup-dotnet@v3
-    with:
-      dotnet-version: 6.0.x
+ - name: Install .NET Framework
+  uses: actions/setup-dotnet@v3
+  with:
+    dotnet-version: '4.6.1'
 
-  - name: Build
-    run: dotnet build $env:Solution_Name --configuration ${{ matrix.configuration }}
+ - name: Build
+  run: msbuild $env:Solution_Name /p:Configuration=${{ matrix.configuration }}
 
-  - name: Run
-    run: dotnet run --project $env:Solution_Name
+ - name: Run
+  run: start cmd /c MathGPTProGenerator.exe
