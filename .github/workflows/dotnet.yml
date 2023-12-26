@@ -25,4 +25,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Run
-      run: D:/a/MathGPTProGenerator/MathGPTProGenerator/MathGPTProGenerator/bin/Debug/MathGPTProGenerator.exe
+      run: D:/a/MathGPTProGenerator/MathGPTProGenerator/MathGPTProGenerator/bin/Debug/ConsoleApp1.exe
