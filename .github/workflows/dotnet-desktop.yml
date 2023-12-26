@@ -21,6 +21,7 @@ jobs:
     Test_Project_Path: MathGPTProGenerator\MathGPTProGenerator.csproj
     Wap_Project_Directory: your-wap-project-directory-name
     Wap_Project_Path: your-wap-project-path
+    DOTNET_ROOT: C:\Program Files\dotnet
 
   steps:
   - name: Checkout
@@ -38,6 +39,11 @@ jobs:
 
   - name: Restore the application
     run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+    env:
+      Configuration: ${{ matrix.configuration }}
+
+  - name: Build the application
+    run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration
     env:
       Configuration: ${{ matrix.configuration }}
 
